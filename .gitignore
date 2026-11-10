@@ -1,0 +1,35 @@
+# Python Virtual Environment & Bytecode
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Local Minikube State & Machine Caches
+.minikube/
+
+# External Tool Downloads & Binaries
+istio-*/
+bin/jq
+bin/istioctl
+
+# MLflow Local Tracking & Run Storage
+mlruns/
+.mlflow/
+
+# Data Directories (keep structure, ignore raw parquet/csv files)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Logs and Temporary Files
+*.log
+logs/
+.ipynb_checkpoints/
+.DS_Store
+*.swp
+*.swo

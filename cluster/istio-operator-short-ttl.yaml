@@ -1,0 +1,21 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istiocontrolplane
+spec:
+  profile: demo
+  meshConfig:
+    enableAutoMtls: true
+    defaultConfig:
+      proxyMetadata:
+        SECRET_TTL: "1h"
+  components:
+    pilot:
+      k8s:
+        env:
+        - name: DEFAULT_WORKLOAD_CERT_TTL
+          value: "1h"
+    egressGateways:
+    - name: istio-egressgateway
+      enabled: false

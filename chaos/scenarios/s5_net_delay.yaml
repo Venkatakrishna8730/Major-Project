@@ -1,0 +1,23 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: NetworkChaos
+metadata:
+  name: s5-workload-to-ca-delay
+  namespace: default
+spec:
+  action: delay
+  mode: all
+  selector:
+    namespaces:
+      - default
+  direction: to
+  target:
+    mode: all
+    selector:
+      namespaces:
+        - istio-system
+      labelSelectors:
+        app: istiod
+  delay:
+    latency: "1000ms"
+    jitter: "200ms"
+  duration: "10m"

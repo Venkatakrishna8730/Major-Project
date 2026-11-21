@@ -1,0 +1,23 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: NetworkChaos
+metadata:
+  name: s4-workload-to-ca-loss
+  namespace: default
+spec:
+  action: loss
+  mode: all
+  selector:
+    namespaces:
+      - default
+  direction: to
+  target:
+    mode: all
+    selector:
+      namespaces:
+        - istio-system
+      labelSelectors:
+        app: istiod
+  loss:
+    loss: "60"
+    correlation: "25"
+  duration: "10m"

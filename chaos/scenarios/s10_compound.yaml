@@ -1,0 +1,41 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: StressChaos
+metadata:
+  name: s10-compound-cpu
+  namespace: istio-system
+spec:
+  mode: one
+  selector:
+    namespaces:
+      - istio-system
+    labelSelectors:
+      app: istiod
+  stressors:
+    cpu:
+      workers: 2
+      load: 85
+  duration: "10m"
+---
+apiVersion: chaos-mesh.org/v1alpha1
+kind: NetworkChaos
+metadata:
+  name: s10-compound-loss
+  namespace: default
+spec:
+  action: loss
+  mode: all
+  selector:
+    namespaces:
+      - default
+  direction: to
+  target:
+    mode: all
+    selector:
+      namespaces:
+        - istio-system
+      labelSelectors:
+        app: istiod
+  loss:
+    loss: "50"
+    correlation: "20"
+  duration: "10m"

@@ -1,0 +1,17 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: StressChaos
+metadata:
+  name: s1-istiod-cpu
+  namespace: istio-system
+spec:
+  mode: one
+  selector:
+    namespaces:
+      - istio-system
+    labelSelectors:
+      app: istiod
+  stressors:
+    cpu:
+      workers: 2
+      load: 90
+  duration: "10m"

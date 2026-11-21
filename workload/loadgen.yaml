@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadgen
+  namespace: default
+  labels:
+    app: loadgen
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loadgen
+  template:
+    metadata:
+      labels:
+        app: loadgen
+    spec:
+      containers:
+      - name: fortio
+        image: fortio/fortio:latest
+        imagePullPolicy: IfNotPresent
+        args:
+        - load
+        - -qps
+        - "20"
+        - -t
+        - "0"
+        - -c
+        - "8"
+        - -abort-on
+        - "0"
+        - http://productpage:9080/productpage
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 128Mi

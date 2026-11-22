@@ -8,7 +8,7 @@
 \contentsline {figure}{\numberline {4.4}{\ignorespaces UML Activity \& Data Flow Diagram}}{14}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Precision-Recall and ROC Curves on Unseen Test Split ($H=10$ Champion)}}{20}{}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Distribution of Proactive Early Warning Lead Times (Mean = 5.75 Minutes)}}{21}{}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces TreeSHAP Summary Plot: Top Predictive Feature Attributions}}{22}{}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Precision-Recall and ROC Curves on Unseen Test Split ($H=10$ Champion)}}{19}{}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Distribution of Proactive Early Warning Lead Times (Mean = 5.75 Minutes)}}{20}{}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces TreeSHAP Summary Plot: Top Predictive Feature Attributions}}{21}{}%
 \addvspace {10\p@ }

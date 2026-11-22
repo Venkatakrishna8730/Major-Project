@@ -30,16 +30,16 @@
 \contentsline {section}{\numberline {5.1}Project Directory Structure}{15}{}%
 \contentsline {section}{\numberline {5.2}Short-TTL Mesh \& Chaos Injection Implementation}{15}{}%
 \contentsline {section}{\numberline {5.3}Feature Engineering Pipeline (77 Dimensional Metrics)}{16}{}%
-\contentsline {section}{\numberline {5.4}Cost-Sensitive XGBoost Training \& MLflow Tracking}{17}{}%
+\contentsline {section}{\numberline {5.4}Cost-Sensitive XGBoost Training \& MLflow Tracking}{16}{}%
 \contentsline {section}{\numberline {5.5}FastAPI Service \& Autonomous Remediation Controller}{17}{}%
-\contentsline {chapter}{\numberline {6}Testing and Evaluation}{19}{}%
-\contentsline {section}{\numberline {6.1}System Testing and Chaos Validation}{19}{}%
-\contentsline {section}{\numberline {6.2}Unit and Integrity Testing}{19}{}%
-\contentsline {section}{\numberline {6.3}Predictive Model Performance}{20}{}%
-\contentsline {section}{\numberline {6.4}Proactive Early Warning Lead Time}{20}{}%
-\contentsline {section}{\numberline {6.5}Model Explainability via TreeSHAP}{21}{}%
-\contentsline {section}{\numberline {6.6}Live Self-Healing Validation}{22}{}%
-\contentsline {chapter}{\numberline {7}Conclusion and Future Scope}{23}{}%
-\contentsline {section}{\numberline {7.1}Conclusion}{23}{}%
-\contentsline {section}{\numberline {7.2}Future Scope}{24}{}%
-\contentsline {chapter}{References}{24}{}%
+\contentsline {chapter}{\numberline {6}Testing and Evaluation}{18}{}%
+\contentsline {section}{\numberline {6.1}System Testing and Chaos Validation}{18}{}%
+\contentsline {section}{\numberline {6.2}Unit and Integrity Testing}{18}{}%
+\contentsline {section}{\numberline {6.3}Predictive Model Performance}{18}{}%
+\contentsline {section}{\numberline {6.4}Proactive Early Warning Lead Time}{19}{}%
+\contentsline {section}{\numberline {6.5}Model Explainability via TreeSHAP}{19}{}%
+\contentsline {section}{\numberline {6.6}Live Self-Healing Validation}{20}{}%
+\contentsline {chapter}{\numberline {7}Conclusion and Future Scope}{22}{}%
+\contentsline {section}{\numberline {7.1}Conclusion}{22}{}%
+\contentsline {section}{\numberline {7.2}Future Scope}{22}{}%
+\contentsline {chapter}{References}{23}{}%

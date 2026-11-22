@@ -13,8 +13,11 @@
 \usepackage{multirow}
 \usepackage{fancyhdr}
 \usepackage{etoolbox}
-\usepackage{url}
+\usepackage{xurl}
 \usepackage{iftex}
+\usepackage[htt]{hyphenat}
+\usepackage{microtype}
+\usepackage{adjustbox}
 
 \ifPDFTeX
   \usepackage[utf8]{inputenc}
@@ -27,6 +30,11 @@
 
 % Set line spacing
 \onehalfspacing
+
+% Allow flexible line breaks to completely eliminate margin overflows
+\emergencystretch=3em
+\tolerance=2000
+\hbadness=2000
 
 % Configure page numbering
 \pagestyle{fancy}
@@ -65,6 +73,10 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{12pt}
 
+% Helper macros for breaking metric names and paths
+\newcommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\metric}[1]{\texttt{\small #1}}
+
 % === Border on every page (safe version) ===
 \usepackage{tikz}
 \usepackage{eso-pic}
@@ -91,33 +103,39 @@
 
 % Page-1 { Top Page }
 \begin{center}
-{\fontsize{18}{27}\bfseries EARLY PREDICTION OF mTLS CERTIFICATE ROTATION FAILURES IN ISTIO SERVICE MESH USING MACHINE LEARNING\\}
-\vspace{0.4cm}
+{\fontsize{17}{25}\bfseries EARLY PREDICTION OF mTLS CERTIFICATE ROTATION FAILURES IN ISTIO SERVICE MESH USING MACHINE LEARNING\\}
+\vspace{0.3cm}
 
 {\fontsize{14}{21}\bfseries A MAJOR PROJECT REPORT\\}
-\vspace{0.5cm}
+\vspace{0.4cm}
 
 {\fontsize{14}{21}\itshape Submitted by\\}
 \vspace{0.3cm}
 
-{\fontsize{14}{21}\bfseries Kokkula Bhavith Kumar (B210662)\\}
-{\fontsize{14}{21}\bfseries Pagidipala Hanuman (B210843)\\}
-{\fontsize{14}{21}\bfseries Amaravadi Sanjay (B211483)\\}
-{\fontsize{14}{21}\bfseries Venkatakrishna Myana (B211830)\\}
-\vspace{0.8cm}
+{\fontsize{13}{19}\bfseries Venkatakrishna Myana (B210013)\\}
+{\fontsize{13}{19}\bfseries Avvaru Shashank (B211432)\\}
+{\fontsize{13}{19}\bfseries Pramodh Pillitla (B210197)\\}
+\vspace{0.6cm}
 
-{\fontsize{16}{24}\bfseries In partial fulfillment for the award of the degree of\\}
-{\fontsize{16}{24}\bfseries Bachelor of Technology\\}
-{\fontsize{14}{21}\bfseries in\\}
-{\fontsize{16}{24}\bfseries Computer Science \& Engineering\\}
-\vspace{0.8cm}
+{\fontsize{15}{22}\bfseries In partial fulfillment for the award of the degree of\\}
+{\fontsize{15}{22}\bfseries Bachelor of Technology\\}
+{\fontsize{13}{20}\bfseries in\\}
+{\fontsize{15}{22}\bfseries Computer Science \& Engineering\\}
+\vspace{0.6cm}
 
-{\fontsize{12}{21}\textbf{\textit{Under the guidance of}}}
+{\fontsize{12}{18}\textbf{\textit{Under the guidance of}}}
 
-{\fontsize{14}{21}\bfseries Mrs. Pullaiahgari Sarika, Asst. Prof\\}
-\vspace{0.8cm}
+{\fontsize{13}{20}\bfseries Mrs. Buddannagari Latha, Asst. Prof\\}
+\vspace{0.5cm}
 
-{\fontsize{14}{16.8}\bfseries DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.30\textwidth]{LOGO.jpeg}
+    \label{fig:logo1}
+\end{figure}
+\vspace{0.2cm}
+
+{\fontsize{13}{16}\bfseries DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\\
 RAJIV GANDHI UNIVERSITY OF KNOWLEDGE TECHNOLOGIES\\
 BASAR, NIRMAL (DIST.),\\
 TELANGANA - 504107\\}
@@ -129,36 +147,42 @@ TELANGANA - 504107\\}
 
 % Page-2 { Cover Page }
 \begin{center}
-{\fontsize{16}{24}\bfseries EARLY PREDICTION OF mTLS CERTIFICATE ROTATION FAILURES IN ISTIO SERVICE MESH USING MACHINE LEARNING\\}
-\vspace{0.6cm}
+{\fontsize{16}{23}\bfseries EARLY PREDICTION OF mTLS CERTIFICATE ROTATION FAILURES IN ISTIO SERVICE MESH USING MACHINE LEARNING\\}
+\vspace{0.5cm}
 
 {\fontsize{12}{18}\bfseries\itshape Project Report submitted to\\
 Rajiv Gandhi University of Knowledge Technologies, Basar\\
 for the partial fulfillment of the requirements\\
 for the award of the degree of\\}
-\vspace{0.6cm}
+\vspace{0.5cm}
 
 {\fontsize{14}{21}\bfseries Bachelor of Technology\\
 in\\
 Computer Science \& Engineering\\}
-\vspace{0.4cm}
+\vspace{0.3cm}
 
 {\fontsize{12}{18}\bfseries\itshape by\\}
 \vspace{0.3cm}
 
-{\fontsize{12}{18}\bfseries\itshape Kokkula Bhavith Kumar (B210662)}\\
-{\fontsize{12}{18}\bfseries\itshape Pagidipala Hanuman (B210843)}\\
-{\fontsize{12}{18}\bfseries\itshape Amaravadi Sanjay (B211483)}\\
-{\fontsize{12}{18}\bfseries\itshape Venkatakrishna Myana (B211830)}\\
-\vspace{0.8cm}
+{\fontsize{12}{18}\bfseries\itshape Venkatakrishna Myana (B210013)}\\
+{\fontsize{12}{18}\bfseries\itshape Avvaru Shashank (B211432)}\\
+{\fontsize{12}{18}\bfseries\itshape Pramodh Pillitla (B210197)}\\
+\vspace{0.6cm}
 
-{\fontsize{12}{21}\bfseries Under the Guidance of\\}
+{\fontsize{12}{18}\bfseries Under the Guidance of\\}
 \vspace{0.3cm}
 
-{\fontsize{12}{18}\bfseries\itshape Mrs. Pullaiahgari Sarika, Asst. Prof\\}
-\vspace{0.8cm}
+{\fontsize{12}{18}\bfseries\itshape Mrs. Buddannagari Latha, Asst. Prof\\}
+\vspace{0.5cm}
 
-{\fontsize{14}{16.8}\bfseries DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\textwidth]{LOGO.jpeg}
+    \label{fig:logo2}
+\end{figure}
+\vspace{0.3cm}
+
+{\fontsize{13}{16}\bfseries DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\\
 RAJIV GANDHI UNIVERSITY OF KNOWLEDGE TECHNOLOGIES, BASAR\\
 NOVEMBER 2026\\}
 
@@ -168,24 +192,30 @@ NOVEMBER 2026\\}
 % Page-3 { Certificate Page }
 \addcontentsline{toc}{chapter}{Certificate}
 \begin{center}
-{\fontsize{14}{16.8}\bfseries DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.22\textwidth]{LOGO.jpeg}
+    \label{fig:logo3}
+\end{figure}
+
+{\fontsize{13}{16}\bfseries DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\\
 RAJIV GANDHI UNIVERSITY OF KNOWLEDGE TECHNOLOGIES, BASAR\\}
-\vspace{0.8cm}
+\vspace{0.6cm}
 
 {\fontsize{16}{24}\bfseries CERTIFICATE\\}
 \end{center}
 
 \vspace{0.3cm}
 
-This is to certify that the Major Project Report entitled \textbf{"Early Prediction of mTLS Certificate Rotation Failures in Istio Service Mesh Using Machine Learning"} submitted by \textbf{Kokkula Bhavith Kumar (B210662), Pagidipala Hanuman (B210843), Amaravadi Sanjay (B211483), and Venkatakrishna Myana (B211830)}, Department of Computer Science and Engineering, Rajiv Gandhi University Of Knowledge Technologies, Basar; for partial fulfillment of the requirements for the degree of Bachelor of Technology in Computer Science and Engineering; is a bonafide record of the work and investigations carried out by them under my supervision and guidance.
+This is to certify that the Major Project Report entitled \textbf{"Early Prediction of mTLS Certificate Rotation Failures in Istio Service Mesh Using Machine Learning"} submitted by \textbf{Venkatakrishna Myana (B210013), Avvaru Shashank (B211432), and Pramodh Pillitla (B210197)}, Department of Computer Science and Engineering, Rajiv Gandhi University Of Knowledge Technologies, Basar; for partial fulfillment of the requirements for the degree of Bachelor of Technology in Computer Science and Engineering; is a bonafide record of the work and investigations carried out by them under my supervision and guidance.
 
-\vspace{2.2cm}
+\vspace{2.0cm}
 
 \begin{minipage}{0.45\textwidth}
 \begin{center}
 \textbf{PROJECT SUPERVISOR}\\
-\vspace{0.4cm}
-\textbf{Mrs. Pullaiahgari Sarika}\\
+\vspace{0.3cm}
+\textbf{Mrs. Buddannagari Latha}\\
 \textbf{Assistant Professor}
 \end{center}
 \end{minipage}
@@ -193,13 +223,13 @@ This is to certify that the Major Project Report entitled \textbf{"Early Predict
 \begin{minipage}{0.45\textwidth}
 \begin{center}
 \textbf{HEAD OF DEPARTMENT}\\
-\vspace{0.4cm}
+\vspace{0.3cm}
 \textbf{Dr. B. Venkat Raman}\\
 \textbf{Assistant Professor \& HOD}
 \end{center}
 \end{minipage}
 
-\vspace{1.8cm}
+\vspace{1.5cm}
 \begin{center}
     \textbf{EXTERNAL EXAMINER}
 \end{center}
@@ -210,28 +240,33 @@ This is to certify that the Major Project Report entitled \textbf{"Early Predict
 \addcontentsline{toc}{chapter}{Declaration}
 
 \begin{center}
-{\fontsize{14}{16.8}\bfseries DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.22\textwidth]{LOGO.jpeg}
+    \label{fig:logo4}
+\end{figure}
+
+{\fontsize{13}{16}\bfseries DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\\
 RAJIV GANDHI UNIVERSITY OF KNOWLEDGE TECHNOLOGIES, BASAR\\}
-\vspace{0.8cm}
+\vspace{0.6cm}
 
 {\fontsize{16}{24}\bfseries DECLARATION\\}
 \end{center}
 
-\vspace{0.6cm}
+\vspace{0.4cm}
 
-We hereby declare that the work which is being presented in this project entitled, \textbf{"Early Prediction of mTLS Certificate Rotation Failures in Istio Service Mesh Using Machine Learning"} submitted to \textbf{RAJIV GANDHI UNIVERSITY OF KNOWLEDGE TECHNOLOGIES, BASAR} in partial fulfillment of the requirements for the award of the degree of \textbf{BACHELOR OF TECHNOLOGY} in \textbf{COMPUTER SCIENCE AND ENGINEERING}, is an authentic record of our own work carried out under the supervision of \textbf{Mrs. Pullaiahgari Sarika}, Assistant Professor in Department of Computer Science and Engineering, RGUKT, Basar.
+We hereby declare that the work which is being presented in this project entitled, \textbf{"Early Prediction of mTLS Certificate Rotation Failures in Istio Service Mesh Using Machine Learning"} submitted to \textbf{RAJIV GANDHI UNIVERSITY OF KNOWLEDGE TECHNOLOGIES, BASAR} in partial fulfillment of the requirements for the award of the degree of \textbf{BACHELOR OF TECHNOLOGY} in \textbf{COMPUTER SCIENCE AND ENGINEERING}, is an authentic record of our own work carried out under the supervision of \textbf{Mrs. Buddannagari Latha}, Assistant Professor in Department of Computer Science and Engineering, RGUKT, Basar.
 
 The matter embodied in this project report has not been submitted by us for the award of any other degree.
 
-\vspace{1.8cm}
+\vspace{1.6cm}
 Place: Basar\\
 Date : \today
 
 \begin{flushright}
-Kokkula Bhavith Kumar (B210662)\\
-Pagidipala Hanuman (B210843)\\
-Amaravadi Sanjay (B211483)\\
-Venkatakrishna Myana (B211830)\\
+Venkatakrishna Myana (B210013)\\
+Avvaru Shashank (B211432)\\
+Pramodh Pillitla (B210197)\\
 \end{flushright}
 \clearpage
 
@@ -239,7 +274,7 @@ Venkatakrishna Myana (B211830)\\
 \chapter*{Acknowledgement}
 \addcontentsline{toc}{chapter}{Acknowledgement}
 
-We would like to express our sincere gratitude to our advisor and project supervisor, \textbf{Mrs. Pullaiahgari Sarika}, whose extensive technical knowledge, continuous encouragement, and valuable guidance have motivated us to execute this project successfully. Her willingness to provide critical feedback and structural advice has been instrumental throughout this endeavor.
+We would like to express our sincere gratitude to our advisor and project supervisor, \textbf{Mrs. Buddannagari Latha}, whose extensive technical knowledge, continuous encouragement, and valuable guidance have motivated us to execute this project successfully. Her willingness to provide critical feedback and structural advice has been instrumental throughout this endeavor.
 
 \vspace{0.3cm}
 
@@ -247,7 +282,7 @@ We express our sincere thanks to Head of the Department, \textbf{Dr. B. Venkat R
 
 \vspace{0.3cm}
 
-We extend our deep gratitude to our Project Co-ordinator, \textbf{Mrs. B. Latha Reddy}, whose organizational guidance and regular reviews helped us maintain rigorous timelines and academic discipline.
+We extend our deep gratitude to our Project Co-ordinator and Faculty Members whose organizational guidance and regular reviews helped us maintain rigorous timelines and academic discipline.
 
 \vspace{0.3cm}
 
@@ -260,10 +295,9 @@ Finally, we express our profound gratitude to our parents, family members, and f
 \vspace{0.8cm}
 
 \begin{flushright}
-\textbf{Kokkula Bhavith Kumar (B210662)}\\
-\textbf{Pagidipala Hanuman (B210843)}\\
-\textbf{Amaravadi Sanjay (B211483)}\\
-\textbf{Venkatakrishna Myana (B211830)}
+\textbf{Venkatakrishna Myana (B210013)}\\
+\textbf{Avvaru Shashank (B211432)}\\
+\textbf{Pramodh Pillitla (B210197)}
 \end{flushright}
 \clearpage
 
@@ -299,7 +333,8 @@ The champion model ($H=10$) achieves an empirical Precision-Recall AUC (PR-AUC) 
 \chapter*{List of Abbreviations and Symbols Used}
 \addcontentsline{toc}{chapter}{List of Abbreviations and Symbols Used}
 
-\begin{tabular}{p{3.2cm}p{10cm}}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{p{3.2cm}p{11cm}}
 \textbf{APM} & Application Performance Monitoring \\
 \textbf{AUC} & Area Under the Curve \\
 \textbf{CA} & Certificate Authority \\
@@ -333,6 +368,7 @@ The champion model ($H=10$) achieves an empirical Precision-Recall AUC (PR-AUC) 
 \textbf{XGBoost} & eXtreme Gradient Boosting \\
 \textbf{xDS} & Dynamic Discovery Service (Envoy Protocol Suite) \\
 \end{tabular}
+\end{adjustbox}
 
 \clearpage
 
@@ -449,7 +485,7 @@ Kubernetes provides Liveness, Readiness, and Startup probes. These probes interr
 
 \subsection*{2. Prometheus Static Metric Thresholds}
 Cluster operators configure Prometheus Alertmanager rules based on scalar thresholds. For example:
-$$\text{Alert if: } \texttt{envoy\_server\_days\_until\_first\_cert\_exp} < 0.0035 \quad (\approx 300\text{ seconds})$$
+$$\text{Alert if: } \texttt{cert\_expiry\_days} < 0.0035 \quad (\approx 300\text{ seconds})$$
 \begin{itemize}
     \item \textbf{Flaw:} A remaining lifetime of 300 seconds is insufficient if \texttt{istiod} is suffering from CPU saturation or deadlocks. In a multi-tenant cluster, pulling container images, scheduling pods, and executing mTLS handshakes takes 120–240 seconds. Under heavy load, the alert fires too late to prevent service disruption.
     \item \textbf{False Positives:} A static threshold fires indiscriminately during transient network fluctuations, causing unnecessary alert fatigue for human operators.
@@ -472,7 +508,8 @@ The proposed system resolves these fundamental limitations by establishing a \te
 \caption{Comparative Analysis: Traditional Monitoring vs. Proposed System}
 \label{tab:comparative_analysis}
 \vspace{0.3cm}
-\begin{tabular}{p{4cm}p{5.5cm}p{5.5cm}}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{p{4.2cm}p{5.5cm}p{5.5cm}}
 \toprule
 \textbf{Evaluation Metric} & \textbf{Traditional Monitoring} & \textbf{Proposed ML Framework} \\
 \midrule
@@ -485,6 +522,7 @@ The proposed system resolves these fundamental limitations by establishing a \te
 \textbf{Outage Prevention} & Fails on short TTLs (<1h) & 100\% Outage elimination \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 \section{Software and Technologies Used}
@@ -563,33 +601,31 @@ The Activity Diagram (Figure \ref{fig:activity_dataflow}) specifies the operatio
 \section{Project Directory Structure}
 The project repository is structured modularly to separate infrastructure, data harvesting, machine learning, and production services:
 
+\begin{footnotesize}
 \begin{verbatim}
 SeriviceMeshML/
-|-- bin/                     # Pinned standalone binaries (istioctl, jq)
-|-- chaos/
-|   `-- scenarios/           # 10 Chaos Mesh manifests (S1 to S10)
-|-- cluster/                 # K8s manifests (short-TTL Istio, CronJob)
-|-- collector/               # PromQL scraper, feature pipeline, poller
-|-- data/
-|   |-- raw/                 # Telemetry parquets, logs, audit trails
-|   `-- processed/           # Engineered features_v1.parquet (77 cols)
-|-- docs/                    # Feature catalog, dataset card, live guides
-|-- ml/
-|   |-- train.py             # Multi-horizon XGBoost training script
-|   |-- evaluate.py          # PR-AUC, ROC-AUC, TreeSHAP evaluator
-|   |-- mlflow_server.sh     # Persistent SQLite tracking launcher
-|   `-- plots/               # High-res evaluation and SHAP curves
-|-- models/                  # champion_xgb.joblib, feature_names.json
-|-- report/                  # LaTeX report source, figures, and PDF
-|-- scripts/                 # Automated stage verification runners (00-07)
-|-- service/
-|   |-- main.py              # FastAPI microservice (/predict, /health)
-|   `-- remediator.py        # Kubernetes API self-healing controller
-`-- workload/                # Bookinfo deployment and Fortio loadgen
+|-- bin/                 # Pinned binaries (istioctl, jq)
+|-- chaos/scenarios/     # 10 Chaos Mesh manifests (S1 to S10)
+|-- cluster/             # K8s manifests (short-TTL Istio, CronJob)
+|-- collector/           # PromQL scraper, feature pipeline, poller
+|-- data/raw/            # Telemetry parquets, logs, audit trails
+|-- data/processed/      # Engineered features_v1.parquet (77 cols)
+|-- docs/                # Feature catalog, dataset card, guides
+|-- ml/train.py          # Multi-horizon XGBoost training script
+|-- ml/evaluate.py       # PR-AUC, ROC-AUC, TreeSHAP evaluator
+|-- ml/plots/            # High-res evaluation and SHAP curves
+|-- models/              # champion_xgb.joblib, feature_names.json
+|-- report/              # LaTeX report source, figures, and PDF
+|-- scripts/             # Automated stage verification runners
+|-- service/main.py      # FastAPI microservice (/predict, /health)
+|-- service/remediator.py# Kubernetes API self-healing controller
+`-- workload/            # Bookinfo deployment and Fortio loadgen
 \end{verbatim}
+\end{footnotesize}
 
 \section{Short-TTL Mesh \& Chaos Injection Implementation}
-Istio was deployed via IstioOperator (\texttt{cluster/istio-operator-short-ttl.yaml}) setting workload certificate validity to 1 hour:
+Istio was deployed via an IstioOperator resource file (\texttt{istio-}\allowbreak\texttt{operator-}\allowbreak\texttt{short-}\allowbreak\texttt{ttl.yaml}) setting workload certificate validity to 1 hour:
+\begin{footnotesize}
 \begin{verbatim}
 spec:
   values:
@@ -600,11 +636,12 @@ spec:
       env:
         DEFAULT_WORKLOAD_CERT_TTL: "1h"
 \end{verbatim}
+\end{footnotesize}
 
-Ten deterministic chaos scenarios were developed under \texttt{chaos/scenarios/}. For example, scenario S1 (\texttt{S1\_istiod\_cpu\_burn.yaml}) injects a 2-core CPU stress container into the \texttt{istio-system} namespace, saturating the Citadel CA worker thread pool during the 30-minute renewal window. The event logging daemon (\texttt{collector/event_logger.py}) records microsecond timestamps of fault injection and clearance.
+Ten deterministic chaos scenarios were developed under \code{chaos/scenarios/}. For example, scenario S1 (\code{S1\_istiod\_cpu\_burn.yaml}) injects a 2-core CPU stress container into the \code{istio-system} namespace, saturating the Citadel CA worker thread pool during the 30-minute renewal window. The event logging daemon (\code{collector/event\_logger.py}) records microsecond timestamps of fault injection and clearance.
 
 \section{Feature Engineering Pipeline (77 Dimensional Metrics)}
-The feature pipeline (\texttt{collector/feature_pipeline.py}) ingests raw metrics from \texttt{data/raw/all\_runs\_metrics.parquet}. To prevent data leakage across experiment boundaries, transformations are applied strictly grouped by \texttt{run\_id}.
+The feature pipeline (\code{collector/feature\_pipeline.py}) ingests raw metrics from \code{data/raw/all\_runs\_metrics.parquet}. To prevent data leakage across experiment boundaries, transformations are applied strictly grouped by \code{run\_id}.
 
 For each metric $x(t)$, rolling windows of $W \in \{1, 5, 15\}$ minutes compute:
 $$\mu_{W}(t) = \frac{1}{|W|} \sum_{\tau \in W} x(t - \tau), \quad \sigma_{W}(t) = \sqrt{\frac{1}{|W|} \sum_{\tau \in W} (x(t - \tau) - \mu_{W}(t))^2}$$
@@ -617,35 +654,35 @@ This yields 77 numerical features characterizing certificate expiration drift, C
 $$y_t^{(H)} = 1 \quad \text{if a rotation failure occurs within } (t, t + H], \quad \text{else } 0$$
 
 \section{Cost-Sensitive XGBoost Training \& MLflow Tracking}
-The training script (\texttt{ml/train.py}) loads the feature table, discards active failure periods ($\texttt{already\_failing} == 0$) to focus exclusively on early warning detection, and calculates the class imbalance ratio:
+The training script (\code{ml/train.py}) loads the feature table, discards active failure periods (\code{already\_failing == 0}) to focus exclusively on early warning detection, and calculates the class imbalance ratio:
 $$\text{scale\_pos\_weight} = \frac{N_{\text{negative}}}{N_{\text{positive}}} = \frac{1485}{661} \approx 2.247$$
 
 XGBoost boosters are trained with the following hyperparameters:
 \begin{itemize}
-    \item \texttt{n\_estimators}: 60
-    \item \texttt{learning\_rate}: 0.20 (expanded log-odds margin)
-    \item \texttt{max\_depth}: 4
-    \item \texttt{subsample}: 0.85, \texttt{colsample\_bytree}: 0.85
-    \item \texttt{eval\_metric}: "aucpr"
+    \item \code{n\_estimators}: 60
+    \item \code{learning\_rate}: 0.20 (expanded log-odds margin)
+    \item \code{max\_depth}: 4
+    \item \code{subsample}: 0.85, \code{colsample\_bytree}: 0.85
+    \item \code{eval\_metric}: "aucpr"
 \end{itemize}
 
-Experiments are logged to MLflow backed by SQLite (\texttt{sqlite:///mlruns.db}). The Horizon $H=10$ model was crowned champion and serialized to \texttt{models/champion\_xgb.joblib}, registered as \texttt{mtls-predictor:v2} in the MLflow Model Registry.
+Experiments are logged to MLflow backed by SQLite (\code{sqlite:///mlruns.db}). The Horizon $H=10$ model was crowned champion and serialized to \code{models/champion\_xgb.joblib}, registered as \code{mtls-predictor:v2} in the MLflow Model Registry.
 
 \section{FastAPI Service \& Autonomous Remediation Controller}
-The FastAPI service (\texttt{service/main.py}) exposes endpoints for real-time inference:
+The FastAPI service (\code{service/main.py}) exposes endpoints for real-time inference:
 \begin{itemize}
-    \item \texttt{GET /health}: Validates that the champion XGBoost model is loaded in memory.
-    \item \texttt{POST /predict}: Accepts JSON telemetry. If raw metrics are supplied, the service dynamically computes rolling features and domain ratios, executes model inference, and determines risk status.
-    \item \texttt{POST /remediate}: Directly triggers the Kubernetes self-healing controller.
-    \item \texttt{GET /metrics}: Exposes Prometheus-formatted operational metrics.
+    \item \code{GET /health}: Validates that the champion XGBoost model is loaded in memory.
+    \item \code{POST /predict}: Accepts JSON telemetry. If raw metrics are supplied, the service dynamically computes rolling features and domain ratios, executes model inference, and determines risk status.
+    \item \code{POST /remediate}: Directly triggers the Kubernetes self-healing controller.
+    \item \code{GET /metrics}: Exposes Prometheus-formatted operational metrics.
 \end{itemize}
 
-The remediation controller (\texttt{service/remediator.py}) interfaces with the Kubernetes cluster via \texttt{kubectl}. When $P \ge 0.75$, it executes:
+The remediation controller (\code{service/remediator.py}) interfaces with the Kubernetes cluster via \texttt{kubectl}. When $P \ge 0.75$, it executes:
 \begin{enumerate}
-    \item \texttt{kubectl -n istio-system scale deployment/istiod --replicas=3}
-    \item \texttt{kubectl -n default rollout restart deployment/<workload>}
+    \item \texttt{kubectl scale deployment/istiod --replicas=3}
+    \item \texttt{kubectl rollout restart deployment/<workload>}
 \end{enumerate}
-Every action is audited with execution timestamps in \texttt{data/raw/remediation\_audit.log}.
+Every action is audited with execution timestamps in \code{data/raw/remediation\_audit.log}.
 
 % ============================================================================
 % CHAPTER 6: TESTING AND EVALUATION
@@ -659,9 +696,9 @@ System testing verified end-to-end telemetry harvesting and fault detection. Und
 
 \section{Unit and Integrity Testing}
 \begin{itemize}
-    \item \textbf{Environment Verification:} Script \texttt{scripts/00\_verify\_env.sh} validated 13/13 critical checks including pinned binary execution, kernel inotify parameters, and Python library bindings.
+    \item \textbf{Environment Verification:} Script \code{scripts/00\_verify\_env.sh} validated 13/13 critical checks including pinned binary execution, kernel inotify parameters, and Python library bindings.
     \item \textbf{Leak-Free Partitioning:} Unit tests confirmed that no rolling window from the validation or test splits referenced timestamps from preceding training runs.
-    \item \textbf{SHAP Booster Compatibility:} Resolved an XGBoost 3.x configuration formatting anomaly in SHAP's \texttt{\_tree.py} by stripping string brackets from booster base scores, ensuring deterministic TreeSHAP calculation.
+    \item \textbf{SHAP Booster Compatibility:} Resolved an XGBoost 3.x configuration formatting anomaly in SHAP's \code{\_tree.py} by stripping string brackets from booster base scores, ensuring deterministic TreeSHAP calculation.
 \end{itemize}
 
 \section{Predictive Model Performance}
@@ -672,6 +709,7 @@ The champion $H=10$ model was evaluated on an independent, unseen test dataset p
 \caption{Champion Model ($H=10$) Quantitative Evaluation Metrics}
 \label{tab:model_metrics}
 \vspace{0.3cm}
+\begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lc}
 \toprule
 \textbf{Evaluation Metric} & \textbf{Empirical Score (Test Split)} \\
@@ -685,6 +723,7 @@ The champion $H=10$ model was evaluated on an independent, unseen test dataset p
 \textbf{Mean Proactive Lead Time} & \textbf{5.75 Minutes (345 Seconds)} \\
 \bottomrule
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 Figure \ref{fig:pr_roc_curves} illustrates the empirical Precision-Recall and ROC curves on the test set, demonstrating perfect separability and zero false alarms.
@@ -728,16 +767,16 @@ To satisfy operational trust and regulatory requirements, TreeSHAP was computed 
 
 The SHAP analysis reveals that:
 \begin{enumerate}
-    \item \texttt{envoy\_cert\_expiry\_sec\_min\_1m}: Possesses the highest negative attribution; as remaining seconds decline below 900s, failure probability surges.
-    \item \texttt{csr\_success\_ratio\_min\_1m}: Sharp drops in CSR success directly indicate control-plane signing distress.
-    \item \texttt{istiod\_cpu\_slope\_5m} \& \texttt{istiod\_memory\_slope\_5m}: High positive slopes signify rapid resource exhaustion, capturing the onset of CA failure before static thresholds are breached.
+    \item \code{envoy\_cert\_expiry\_sec\_min\_1m}: Possesses the highest negative attribution; as remaining seconds decline below 900s, failure probability surges.
+    \item \code{csr\_success\_ratio\_min\_1m}: Sharp drops in CSR success directly indicate control-plane signing distress.
+    \item \code{istiod\_cpu\_slope\_5m} \& \code{istiod\_memory\_slope\_5m}: High positive slopes signify rapid resource exhaustion, capturing the onset of CA failure before static thresholds are breached.
 \end{enumerate}
 
 \section{Live Self-Healing Validation}
-The complete system was validated live on Minikube (\texttt{scripts/07\_deploy\_service.sh}):
+The complete system was validated live on Minikube (\code{scripts/07\_deploy\_service.sh}):
 \begin{itemize}
-    \item \textbf{Healthy Telemetry ($P < 0.75$):} Feeding normal telemetry resulted in $P = 0.0006$ (0.06\% risk). The system returned \texttt{NORMAL} with \texttt{remediation\_status: "NONE\_REQUIRED"}.
-    \item \textbf{Distress Telemetry ($P \ge 0.75$):} Feeding degraded telemetry resulted in $P = 0.9988$ (99.88\% risk). The system returned \texttt{CRITICAL}, immediately scaled \texttt{istiod} from 1 to 3 replicas, and initiated rolling restarts of \texttt{ratings-v1}, successfully audited in \texttt{remediation\_audit.log}.
+    \item \textbf{Healthy Telemetry ($P < 0.75$):} Feeding normal telemetry resulted in $P = 0.0006$ (0.06\% risk). The system returned \texttt{NORMAL} with \code{remediation\_status: "NONE\_REQUIRED"}.
+    \item \textbf{Distress Telemetry ($P \ge 0.75$):} Feeding degraded telemetry resulted in $P = 0.9988$ (99.88\% risk). The system returned \texttt{CRITICAL}, immediately scaled \texttt{istiod} from 1 to 3 replicas, and initiated rolling restarts of \texttt{ratings-v1}, successfully audited in \code{remediation\_audit.log}.
 \end{itemize}
 
 % ============================================================================

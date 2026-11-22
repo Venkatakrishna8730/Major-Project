@@ -18,6 +18,8 @@ bin/istioctl
 
 # MLflow Local Tracking & Run Storage
 mlruns/
+mlruns.db
+mlartifacts/
 .mlflow/
 
 # Data Directories (keep structure, ignore raw parquet/csv files)

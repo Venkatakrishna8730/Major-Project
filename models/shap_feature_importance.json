@@ -1,0 +1,62 @@
+[
+  {
+    "feature": "envoy_cert_expiry_sec",
+    "mean_abs_shap": 0.10064242035150528
+  },
+  {
+    "feature": "csr_request_rate",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "cert_issuance_rate",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "csr_auth_err_rate",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "csr_parse_err_rate",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "istiod_process_cpu",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "istiod_memory_bytes",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "istiod_cgroup_cpu",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "pilot_xds_pushes",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "req_rate_total",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "req_rate_5xx",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "pod_restarts_5m",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "node_ready_count",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "csr_success_ratio",
+    "mean_abs_shap": 0.0
+  },
+  {
+    "feature": "error_5xx_ratio",
+    "mean_abs_shap": 0.0
+  }
+]

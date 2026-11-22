@@ -1,0 +1,14 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces UML Use Case Diagram of the Predictive Reliability Framework}}{12}{}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces UML Component and Architecture Diagram}}{13}{}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces UML Sequence Diagram: Failure Onset, ML Prediction, and Self-Healing}}{13}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces UML Activity \& Data Flow Diagram}}{14}{}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Precision-Recall and ROC Curves on Unseen Test Split ($H=10$ Champion)}}{20}{}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Distribution of Proactive Early Warning Lead Times (Mean = 5.75 Minutes)}}{21}{}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces TreeSHAP Summary Plot: Top Predictive Feature Attributions}}{22}{}%
+\addvspace {10\p@ }

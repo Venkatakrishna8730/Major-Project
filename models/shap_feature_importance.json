@@ -1,7 +1,11 @@
 [
   {
+    "feature": "envoy_cert_expiry_sec_max_15m",
+    "mean_abs_shap": 0.10064999759197235
+  },
+  {
     "feature": "envoy_cert_expiry_sec",
-    "mean_abs_shap": 0.10064242035150528
+    "mean_abs_shap": 0.0010189973982051015
   },
   {
     "feature": "csr_request_rate",
@@ -53,10 +57,6 @@
   },
   {
     "feature": "csr_success_ratio",
-    "mean_abs_shap": 0.0
-  },
-  {
-    "feature": "error_5xx_ratio",
     "mean_abs_shap": 0.0
   }
 ]

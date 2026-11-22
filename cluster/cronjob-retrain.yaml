@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mtls-model-retrain
+  namespace: istio-system
+  labels:
+    app: mtls-retrain
+spec:
+  schedule: "0 2 * * *"  # Daily at 02:00 UTC
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: mtls-retrain
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: mtls-predictor-sa
+          containers:
+            - name: retrain-worker
+              image: python:3.10-slim
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/sh", "-c"]
+              args:
+                - |
+                  echo "[RETRAIN CRON] Triggering scheduled model retraining..." && \
+                  python /app/ml/train.py --data /app/data/processed/features_v1.parquet && \
+                  echo "[RETRAIN CRON] Retraining finished successfully."
+              volumeMounts:
+                - name: app-code
+                  mountPath: /app
+          volumes:
+            - name: app-code
+              hostPath:
+                path: /home/user/Documents/SeriviceMeshML
+                type: Directory

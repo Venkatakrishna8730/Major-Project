@@ -41,14 +41,18 @@ def compute_derived_ratios_and_slopes(df: pd.DataFrame) -> pd.DataFrame:
     slope_signals = ["istiod_process_cpu", "istiod_memory_bytes", "csr_request_rate", "envoy_cert_expiry_sec"]
     for sig in slope_signals:
         if sig in df.columns:
-            df[f"{sig}_slope_15s"] = df[sig].diff(1).fillna(0.0)
-            df[f"{sig}_slope_1m"] = df[sig].diff(4).fillna(0.0)
+            if "run_id" in df.columns:
+                df[f"{sig}_slope_15s"] = df.groupby("run_id")[sig].diff(1).fillna(0.0).values
+                df[f"{sig}_slope_1m"] = df.groupby("run_id")[sig].diff(4).fillna(0.0).values
+            else:
+                df[f"{sig}_slope_15s"] = df[sig].diff(1).fillna(0.0)
+                df[f"{sig}_slope_1m"] = df[sig].diff(4).fillna(0.0)
 
     return df
 
 
 def compute_rolling_features(df: pd.DataFrame, step_sec: int = 15) -> pd.DataFrame:
-    """Compute rolling window aggregations (mean, max, std)."""
+    """Compute rolling window aggregations (mean, max, std) partitioned by run_id."""
     df = df.copy()
 
     # Define window sizes in terms of rows (15s steps)
@@ -70,10 +74,16 @@ def compute_rolling_features(df: pd.DataFrame, step_sec: int = 15) -> pd.DataFra
     for win_name, win_size in windows.items():
         for sig in core_signals:
             if sig in df.columns:
-                roller = df[sig].rolling(window=win_size, min_periods=1)
-                df[f"{sig}_mean_{win_name}"] = roller.mean()
-                df[f"{sig}_max_{win_name}"] = roller.max()
-                df[f"{sig}_std_{win_name}"] = roller.std().fillna(0.0)
+                if "run_id" in df.columns:
+                    roller = df.groupby("run_id")[sig].rolling(window=win_size, min_periods=1)
+                    df[f"{sig}_mean_{win_name}"] = roller.mean().reset_index(level=0, drop=True).values
+                    df[f"{sig}_max_{win_name}"] = roller.max().reset_index(level=0, drop=True).values
+                    df[f"{sig}_std_{win_name}"] = roller.std().reset_index(level=0, drop=True).fillna(0.0).values
+                else:
+                    roller = df[sig].rolling(window=win_size, min_periods=1)
+                    df[f"{sig}_mean_{win_name}"] = roller.mean()
+                    df[f"{sig}_max_{win_name}"] = roller.max()
+                    df[f"{sig}_std_{win_name}"] = roller.std().fillna(0.0)
 
     return df
 

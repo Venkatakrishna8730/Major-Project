@@ -85,15 +85,14 @@ def train_horizon_model(
     print(f"  Class Weight (scale_pos_weight): {scale_pos_weight:.3f}")
 
     params = {
-        "n_estimators": 120,
+        "n_estimators": 60,
         "max_depth": 4,
-        "learning_rate": 0.05,
+        "learning_rate": 0.20,
         "subsample": 0.85,
         "colsample_bytree": 0.85,
         "scale_pos_weight": scale_pos_weight,
         "random_state": random_seed,
-        "eval_metric": "aucpr",
-        "early_stopping_rounds": 15
+        "eval_metric": "aucpr"
     }
 
     model = XGBClassifier(**params)

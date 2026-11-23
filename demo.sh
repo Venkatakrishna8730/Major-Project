@@ -1,0 +1,1 @@
+/home/user/Documents/SeriviceMeshML/scripts/run_live_demo_pipeline.sh
